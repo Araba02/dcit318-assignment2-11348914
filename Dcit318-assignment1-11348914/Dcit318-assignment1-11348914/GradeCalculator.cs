@@ -1,45 +1,42 @@
 ﻿using System;
 
-namespace GradeCalculator
+public class GradeCalculator
 {
-    class Program
+    public static void Run()
     {
-        static void Main(string[] args)
-        {
-            Console.Write("Enter a numerical grade (0-100): ");
-            string input = Console.ReadLine();
+        Console.Write("Enter a numerical grade (0-100): ");
+        string input = Console.ReadLine();
 
-            if (double.TryParse(input, out double grade))
+        if (double.TryParse(input, out double grade))
+        {
+            if (grade >= 0 && grade <= 100)
             {
-                if (grade >= 0 && grade <= 100)
-                {
-                    string letterGrade = GetLetterGrade(grade);
-                    Console.WriteLine($"Grade: {grade}");
-                    Console.WriteLine($"Letter Grade: {letterGrade}");
-                }
-                else
-                {
-                    Console.WriteLine("Error: Grade must be between 0 and 100.");
-                }
+                string letterGrade = GetLetterGrade(grade);
+                Console.WriteLine($"Grade: {grade}");
+                Console.WriteLine($"Letter Grade: {letterGrade}");
             }
             else
             {
-                Console.WriteLine("Error: Please enter a valid numerical grade.");
+                Console.WriteLine("Error: Grade must be between 0 and 100.");
             }
         }
-
-        static string GetLetterGrade(double grade)
+        else
         {
-            if (grade >= 90)
-                return "A";
-            else if (grade >= 80)
-                return "B";
-            else if (grade >= 70)
-                return "C";
-            else if (grade >= 60)
-                return "D";
-            else
-                return "F";
+            Console.WriteLine("Error: Please enter a valid numerical grade.");
         }
+    }
+
+    static string GetLetterGrade(double grade)
+    {
+        if (grade >= 90)
+            return "A";
+        else if (grade >= 80)
+            return "B";
+        else if (grade >= 70)
+            return "C";
+        else if (grade >= 60)
+            return "D";
+        else
+            return "F";
     }
 }

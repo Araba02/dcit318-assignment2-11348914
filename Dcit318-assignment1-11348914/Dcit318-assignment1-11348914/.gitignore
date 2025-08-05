@@ -10,3 +10,6 @@ obj/
 # Ignore IDE/OS-specific files
 *.log
 *.vscode/
+*.vsidx
+
+

@@ -1,45 +1,34 @@
 ﻿using System;
 
-namespace GradeCalculator
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Console.Write("Enter a numerical grade (0-100): ");
-            string input = Console.ReadLine();
+        Console.WriteLine("===== DCIT318 Assignment Menu =====");
+        Console.WriteLine("1. Grade Calculator");
+        Console.WriteLine("2. Ticket Price Calculator");
+        Console.WriteLine("3. Triangle Type Identifier");
+        Console.Write("Enter your choice (1-3): ");
 
-            if (double.TryParse(input, out double grade))
-            {
-                if (grade >= 0 && grade <= 100)
-                {
-                    string letterGrade = GetLetterGrade(grade);
-                    Console.WriteLine($"Grade: {grade}");
-                    Console.WriteLine($"Letter Grade: {letterGrade}");
-                }
-                else
-                {
-                    Console.WriteLine("Error: Grade must be between 0 and 100.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Error: Please enter a valid numerical grade.");
-            }
+        string choice = Console.ReadLine();
+
+        switch (choice)
+        {
+            case "1":
+                GradeCalculator.Run();
+                break;
+            case "2":
+                TicketPriceCalculator.Run();  
+                break;
+            case "3":
+                TriangleIdentifier.Run();
+                break;
+            default:
+                Console.WriteLine("Invalid choice.");
+                break;
         }
 
-        static string GetLetterGrade(double grade)
-        {
-            if (grade >= 90)
-                return "A";
-            else if (grade >= 80)
-                return "B";
-            else if (grade >= 70)
-                return "C";
-            else if (grade >= 60)
-                return "D";
-            else
-                return "F";
-        }
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey();
     }
 }
